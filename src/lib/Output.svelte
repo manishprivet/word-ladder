@@ -15,7 +15,7 @@
 				>
 			{/each}
             {#if node_index !== pathData.path.length - 1}
-                {`--->`}
+                {`--->`}&nbsp;
             {/if}
 		</span>
 	{/each}

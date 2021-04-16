@@ -3,9 +3,10 @@
 	import { bfsPath } from '../utils/algo';
 	import type { PathData } from '../utils/algo';
 	import Output from './Output.svelte';
-	import { words } from '../data/words';
+	// import { words } from '../data/words';
 
-	let model_creation = false,
+	let dataset_import = false,
+		model_creation = false,
 		path_calculating = false,
 		word1 = '',
 		word2 = '',
@@ -18,15 +19,20 @@
 		if (word1.length !== word2.length) return (error = 'Please enter words of Same Length');
 		const wordLength = word1.length;
 		if (wordLength === 0) return (error = 'Please enter all values');
+		dataset_import = true;
+		const { words } = await import('../data/words');
+		dataset_import = false;
 		if (!words.includes(word1))
 			return (error = `${word1} is not in the Dictionary. Please enter a valid English word.`);
 		if (!words.includes(word2))
 			return (error = `${word2} is not in the Dictionary. Please enter a valid English word.`);
 		model_creation = true;
 		const model = await createModel(words, wordLength);
+		model_creation = false;
 		path_calculating = true;
 		const data = await bfsPath(model, word1, word2);
-		(model_creation = false), (path_calculating = false), (error = '');
+		path_calculating = false;
+		error = '';
 		(calculated = true), (pathData = data);
 	};
 </script>
@@ -42,7 +48,9 @@
 	<p class="error">{error}</p>
 {/if}
 
-{#if model_creation}
+{#if dataset_import}
+	<p>Importing Dictionary...</p>
+{:else if model_creation}
 	<p>Creating Model...</p>
 {:else if path_calculating}
 	<p>Calculating Path</p>
@@ -90,9 +98,9 @@
 		font-size: 1.25rem;
 		cursor: pointer;
 
-        &:hover {
-            background-color: #ff3e00;
-            color: white;
-        }
+		&:hover {
+			background-color: #ff3e00;
+			color: white;
+		}
 	}
 </style>
