@@ -19,6 +19,7 @@
 		if (word1.length !== word2.length) return (error = 'Please enter words of Same Length');
 		const wordLength = word1.length;
 		if (wordLength === 0) return (error = 'Please enter all values');
+		if (wordLength > 6) return (error = 'Please enter a word upto 6 letters, or your browser will hang up :)')
 		dataset_import = true;
 		const { words } = await import('../data/words');
 		dataset_import = false;
