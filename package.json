@@ -26,6 +26,7 @@
   },
   "type": "module",
   "dependencies": {
-    "sass": "^1.32.8"
+    "sass": "^1.32.8",
+    "@sveltejs/adapter-vercel": "next"
   }
 }

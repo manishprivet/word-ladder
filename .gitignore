@@ -2,3 +2,6 @@
 build/
 node_modules/
 .env
+
+/.svelte
+/.vercel_build_output
