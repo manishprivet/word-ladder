@@ -16,6 +16,8 @@
 
 	let onClick = async () => {
 		calculated = false;
+		word1 = word1.toLowerCase();
+		word2 = word2.toLowerCase();
 		if (word1.length !== word2.length) return (error = 'Please enter words of Same Length');
 		const wordLength = word1.length;
 		if (wordLength === 0) return (error = 'Please enter all values');
