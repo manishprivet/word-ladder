@@ -9,6 +9,10 @@
 <main>
 	<h1>Word Ladder</h1>
 	<Inputs />
+	<p>
+		Made with ❤️ at <a target="__blank" href="https://github.com/manishprivet/word-ladder">Github</a
+		>
+	</p>
 </main>
 
 <style>
@@ -32,5 +36,13 @@
 		h1 {
 			max-width: none;
 		}
+	}
+
+	p {
+		margin-top: 50px;
+	}
+
+	p a {
+		text-decoration: none;
 	}
 </style>
